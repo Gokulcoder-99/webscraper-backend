@@ -15,7 +15,7 @@ const createProduct = asyncHandler(async (req, res) => {
       };
   
   //Set interval
-  const handle = setInterval(scrape,1000*60*24);
+  const handle = setInterval(scrape,1000*60*12);
   
   async function scrape() {
     const {url} = req.body
