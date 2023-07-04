@@ -15,7 +15,7 @@ const createProduct = asyncHandler(async (req, res) => {
       };
   
   //Set interval
-  const handle = setInterval(scrape, 42300000);
+  const handle = setInterval(scrape,1000*60*24);
   
   async function scrape() {
     const {url} = req.body
@@ -47,18 +47,23 @@ const createProduct = asyncHandler(async (req, res) => {
           product.Price = priceNum;
           console.log(product)
           const{Image,Name,Rating,Price,Link}=  product ;
-          const Product = await productvalue.create({
-            Image,
-            Name,
-            Rating,
-            Price,
-            Link,   
-          });
+           const productFound = await productvalue.findOne({Name,Link});
+                if (!productFound) {
+                  const Product = await productvalue.create({
+                                            Image,
+                                            Name,
+                                            Rating,
+                                            Price,
+                                            Link,   
+                                          });
          
-          res.status(201).json(Product);
-      }else{
-          console.log("Not a valid link")
-      }
+                         return res.status(201).json(Product);;
+                }
+
+             if(productFound){
+                 return res.status(200).json(productFound)
+             }
+         }
   } 
   scrape()
 
