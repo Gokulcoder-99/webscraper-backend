@@ -47,7 +47,7 @@ const createProduct = asyncHandler(async (req, res) => {
           product.Price = priceNum;
           console.log(product)
           const{Image,Name,Rating,Price,Link}=  product ;
-           const productFound = await productvalue.findOne({Name,Link});
+           const productFound = await productvalue.findOne({Link});
                 if (!productFound) {
                   const Product = await productvalue.create({
                                             Image,
