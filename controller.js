@@ -10,8 +10,6 @@ const productvalue = require('./model');
       Link:""
       };
 
-  //Set interval
-  const handle = setInterval(scrape,1000*60*12);
 
   
  const scrape =asyncHandler( async(url)=> {
