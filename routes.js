@@ -1,8 +1,11 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const createProduct = require("./controller");
+const productValue = require('./model')
+router.get("/product", async(req,res)=>{
+    const data = await productValue.find()
+    res.status(200).send({
+        mess:data
+    })
+})
 
-
-
-router.route("/create").post(createProduct);
-module.exports = router;
+module.exports=router
