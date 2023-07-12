@@ -111,5 +111,3 @@ if(isSnapdealLink){
  } )
 
   module.exports=scrape;
-
-
