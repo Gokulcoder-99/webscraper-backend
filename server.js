@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors')
 const connectDb = require("./config");
 const env = require('dotenv');
-const scrape = require('./scrape')
+const scrape = require('./controller')
 const route = require('./routes')
 connectDb();
 env.config();
