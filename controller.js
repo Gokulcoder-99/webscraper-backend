@@ -9,13 +9,10 @@ const productvalue = require('./model');
       Price :"",
       Link:""
       };
-  
-<<<<<<< HEAD
- 
-=======
+
   //Set interval
   const handle = setInterval(scrape,1000*60*12);
->>>>>>> 497e0c3ae888dabf13606284d54c06d802e9e07f
+
   
  const scrape =asyncHandler( async(url)=> {
   
@@ -48,7 +45,6 @@ const productvalue = require('./model');
               .replace(/[,.]/g, "");
           const priceNum = parseInt(price);
           product.Price = priceNum;
-<<<<<<< HEAD
       }
 // Flipkart Product fetch
       if(isFlipkartLink){
@@ -117,32 +113,3 @@ if(isSnapdealLink){
   module.exports=scrape;
 
 
-=======
-          console.log(product)
-          const{Image,Name,Rating,Price,Link}=  product ;
-           const productFound = await productvalue.findOne({Name});
-                if (!productFound) {
-                  const Product = await productvalue.create({
-                                            Image,
-                                            Name,
-                                            Rating,
-                                            Price,
-                                            Link,   
-                                          });
-         
-                         return res.status(201).json(Product);;
-                }
-
-             if(productFound){
-                 return res.status(200).json(productFound)
-             }
-         }
-  } 
-  scrape()
-
-
-  });
-
-
-module.exports = createProduct
->>>>>>> 497e0c3ae888dabf13606284d54c06d802e9e07f
